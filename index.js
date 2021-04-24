@@ -1,26 +1,21 @@
-// const express = require('express');
-// const router = express.Router();
 const inquirer = require('inquirer');
+const db = require('./db/connection');
 
-// const employeeData = [];
-// console.log(employeeData);
-
-// router.use(require('./role'));
-// router.use(require('./department'));
-// router.use(require('./employee'));
+const newEmployee = [];
+console.log(newEmployee);
 
 const initQuestion = {
     type:'list',
     name: 'action',
     message: 'What would you like to do?',
     choices: ['View all employees', 
-    'View all employees by department',
-    'View all employees by manager',
+    'View all departments',
+    'View all roles',
+    'Add a department',
     'Add employee',
     'Remove employee',
     'Update employee role',
     'Update employee manager',
-    'View all roles',
     'Add role',
     'Remove role']
 }
@@ -30,12 +25,15 @@ async function starterPrompt () {
 
         switch (question) {
             case "View all employees":
-                
+                viewEmployees()
             break;
-            case "View all employees by department":
-                
+            case "View all departments":
+                viewAllDepartments()
             break;
-            case "View all employees by manager":
+            case "View all roles":
+                viewAllRoles()
+            break;
+            case "Add a department":
                 
             break;
             case "Add employee":
@@ -64,67 +62,33 @@ async function starterPrompt () {
         }
 }
 
-// const starterPrompt = () => {
-//     return inquirer
-//     .prompt([
-//         {
-//             type:'list',
-//             name: 'action',
-//             message: 'What would you like to do?',
-//             choices: ['View all employees', 
-//             'View all employees by department',
-//             'View all employees by manager',
-//             'Add employee',
-//             'Remove employee',
-//             'Update employee role',
-//             'Update employee manager',
-//             'View all roles',
-//             'Add role',
-//             'Remove role']
-//         }
-//     ])
-//     .then(answers => {
-//       console.log(answers);
-//       switch (answers.action) {
-//           case "View all employees":
-              
-//           break;
-//           case "View all employees by department":
-              
-//           break;
-//           case "View all employees by manager":
-              
-//           break;
-//           case "Add employee":
-              
-//           break;
-//           case "Remove employee":
-                  
-//           break;
-//           case "Update employee role":
-                  
-//           break;
-//           case "Update employee manager":
-              
-//           break;
-//           case "View all roles":
-                  
-//           break;
-//           case "Add role":
-                  
-//           break;
-//           case "Remove role":
-                  
-//               break;
-//           default:
-//               break;
-//       }
-//   })
-//   .catch(err => {
-//       console.log(err);
-//     });
-// };
+async function viewEmployees () {
+    db.query('SELECT * FROM employee')
+    {
+        if (error) {
+            console.error('Nothing exists')
+            throw error
+        }
+    }
+}
 
-starterPrompt()
+async function viewAllDepartments () {
+    db.query('SELECT * FROM department')
+    {
+        if (error) {
+            console.error('Nothing exists')
+            throw error
+        }
+    }
+}
+async function viewAllRoles () {
+    db.query('SELECT * FROM roles')
+    {
+        if (error) {
+            console.error('Nothing exists')
+            throw error
+        }
+    }
+}
 
-// module.exports = router;
+starterPrompt();
