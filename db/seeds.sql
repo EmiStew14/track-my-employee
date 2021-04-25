@@ -27,10 +27,10 @@ INSERT INTO department
 INSERT INTO employee
   (first_name, last_name, role_id, manager_id)
 VALUES
-  ('James', 'Fraser',10 , NULL ),
+  ('James', 'Fraser', 10 , NULL ),
   ('Jack', 'London', 1, 2  ),
   ('Robert', 'Bruce', 2, NULL  ),
-  ('Peter', 'Greenaway',3, 4  ),
+  ('Peter', 'Greenaway', 3, 4  ),
   ('Derek', 'Jarman', 4, NULL  ),
   ('Paolo', 'Pasolini', 5, 6  ),
   ('Heathcote', 'Williams', 6, NULL  ),
