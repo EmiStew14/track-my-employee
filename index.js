@@ -252,12 +252,12 @@ const addEmployee = () =>{
     inquirer.prompt ([
         {
             type: 'input',
-            name: 'firstName',
+            name: 'first_name',
             message: "What is your employee's first name?"
         },
         {
             type:'input',
-            name: 'lastName',
+            name: 'last_name',
             message: "What is their last name?",
             validate: (lastName) => {
                 if (lastName) {
@@ -270,21 +270,21 @@ const addEmployee = () =>{
         },
         {
             type: 'list',
-            name: 'roles',
+            name: 'role_id',
             message: 'What role should they have?',
             choices: selectRole
         },
         {
             type: 'confirm',
-            name: 'manager',
+            name: 'manager_id',
             message: 'Does this employee have a manager id?',
-            Default: false
+            Default: 0
         }
         ])
         .then(answers => {
-            console.log(answers);
-            db.query(`INSERT INTO employee SET ?, ?, ?, ?`
-            [{first_name: answers.firstName},{last_name: answers.lastName},{role_id: answers.roles}],(err,rows) => {
+            console.log(typeof answers.manager_id);
+            db.query(`INSERT INTO employee SET ?, ?, ?, ?`,
+            [{first_name: answers.first_name},{last_name: answers.last_name},{role_id: answers.role_id},{manager_id: answers.manager_id}],(err,rows) => {
                 if (err) {
                  throw err;
                   }
