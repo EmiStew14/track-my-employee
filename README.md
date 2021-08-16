@@ -29,7 +29,7 @@
     https://drive.google.com/file/d/1biSsB_uzaYML_ElYRfHGUm3JoVae55S9/view
 
   ## Languages:
-  JavaScript,Node.js,NPM
+  JavaScript,Node.js, MySQL, NPM, console.table, easy-table, express, inquirer
   
   ## License:
     MIT
